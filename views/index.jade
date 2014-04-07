@@ -1,0 +1,23 @@
+extends layout
+
+block body
+	.container
+		h1 Hashtags and pictures that people like
+		.row
+			each image in images
+				.col-xs-4.images(style="text-align:center")
+					img.img-responsive.img.hashtag-img(src=image.image)
+					br
+					h4= "#"+image.hashtag
+					form#deleteHashTag(role="form", method="post", action="/delete")
+						input(type="hidden", name="id", value=image._id)
+						button.btn.btn-danger(type="submit") Delete
+			br
+
+	.container
+		h1 What hashtag would you like to see?
+		form#viewHashTag(role="form", method="post", action="/hashtag")
+			h3 View Hashtag
+			.form-group
+				input#hashtag.form-control(type="text", placeholder="hashtag", name="hashtag")
+			input#submitBtn.btn.btn-default(type="submit", value="View Hashtag")

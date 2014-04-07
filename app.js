@@ -12,11 +12,12 @@ var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/instagramexample');
 
 //Configures the Template engine
-app.engine('handlebars', handlebars());
-app.set('view engine', 'handlebars');
+//app.engine('handlebars', handlebars());
+app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.bodyParser());
+app.locals.pretty = true;
 
 //routes
 app.get('/', index.view);
