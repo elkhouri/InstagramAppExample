@@ -2,7 +2,6 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars');
 var app = express();
 //route for hashtag
 var hashtag = require('./routes/hashtag');
@@ -12,7 +11,6 @@ var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/instagramexample');
 
 //Configures the Template engine
-//app.engine('handlebars', handlebars());
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
