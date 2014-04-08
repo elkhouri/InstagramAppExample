@@ -12,6 +12,10 @@ exports.getHashtag = function(req, res) {
 			//create temporary json object
 			tempJSON = {};
 			tempJSON.url = item.images.standard_resolution.url;
+			tempJSON.tags = item.tags.slice(0,3).join(", ");
+			tempJSON.link = item.link;
+			tempJSON.id = item.id;
+
 			//insert json object into image array
 			imageArr.push(tempJSON);
 		});
@@ -26,8 +30,9 @@ exports.getHashtag = function(req, res) {
 exports.saveFavorites = function(req, res) {
 	//create a new model for the database
 	var newImage = new models.Img({
-		"hashtag": req.body.hashtag,
-		"image": req.body.url
+		//"hashtag": req.body.hashtag,
+		//"image": req.body.url
+		"id": req.body.id
 	});
 
 	newImage.save(callbackFunction);

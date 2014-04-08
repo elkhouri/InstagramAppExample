@@ -8,7 +8,17 @@ html
 		link(rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
 
 	body
-		block body
+		nav.navbar.navbar-inverse.navbar-static-top(role='navigation')
+			.container
+				.navbar-header
+					a.navbar-brand(href='/') Instagram App
+				.collapse.navbar-collapse
+					form.navbar-form.navbar-left(role="form", method="post", action="/hashtag")
+						.form-group
+							input#hashtag.form-control(type="text", placeholder="Hashtag", name="hashtag")
+						button.btn.btn-default(type='submit') View Hashtag
+		.container
+			block body
 		
 		script(src="https://code.jquery.com/jquery.js")
 		script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
