@@ -2,13 +2,17 @@ extends layout
 
 block body
 	h1 Hashtags and pictures that people like
-	.row
-		each image in images
-			.col-xs-4.images(style="text-align:center")
-				.thumbnail
-					img.img-responsive.img.hashtag-img(src=image.image)
-					.caption
-						h4= "#"+image.hashtag
-						form#deleteHashTag(role="form", method="post", action="/delete")
-							input(type="hidden", name="id", value=image._id)
-							button.btn.btn-danger(type="submit") Delete
+	if images.length
+		.row
+			each image in images
+				.col-xs-4.images(style="text-align:center")
+					.thumbnail
+						a(href=image.link): img.img-responsive.img.hashtag-img(src=image.url)
+						.caption
+							h4= "#"+image.hashtag
+							form#deleteHashTag(role="form", method="post", action="/delete")
+								input(type="hidden", name="id", value=image._id)
+								button.btn.btn-danger(type="submit") Delete
+								
+	else
+		h2 None. Go find some!
